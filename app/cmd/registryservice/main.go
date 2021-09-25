@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	r := gin.Default()
-	r.POST("/services", registry.ServeHttpPost)
+	r := gin.New()
+	r.POST("/services", registry.AddService)
+	r.DELETE("/services", registry.RemoveService)
 	r.Run(registry.ServerPort)
 }
